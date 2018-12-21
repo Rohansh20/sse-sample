@@ -35,8 +35,8 @@ export class AppComponent {
   }
 
   testSseGetTableOf(): void {
-    const source = new EventSource('http://localhost:3333/multiplier?number=3');
-    source.addEventListener('multiplier', (event: MessageEvent) => {
+    const source = new EventSource('http://localhost:3333/getTableOf?number=3');
+    source.addEventListener('getTableOf', (event: MessageEvent) => {
       this.sseGetTableOfResponse.push(JSON.parse(event.data));
     });
     source.addEventListener('close', () => {
