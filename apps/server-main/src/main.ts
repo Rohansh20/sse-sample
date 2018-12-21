@@ -35,8 +35,10 @@ app.get('/counter', (req, res) => {
     );
   }, 1000);
   setTimeout(() => {
+    res.write(`event:close\ndata:null\n\n`);
+    res.end();
     clearInterval(interval);
-  }, 10000);
+  }, 5000);
 });
 
 const port = 3333;
