@@ -13,6 +13,9 @@
     },
     "client-main-e2e": {
       "tags": []
+    },
+    "server-main": {
+      "tags": []
     }
   }
 }
