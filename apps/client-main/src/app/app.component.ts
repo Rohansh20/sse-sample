@@ -8,11 +8,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   getWelcomeResponse?: any;
+  sseCounterResponse: any[] = [];
 
   constructor(private _http: HttpClient) {}
 
   async testGetWelcome(): Promise<void> {
-    const response = await this._http.get<any>('http://localhost:3333/welcome').toPromise();
+    const response = await this._http
+      .get<any>('http://localhost:3333/welcome')
+      .toPromise();
     this.getWelcomeResponse = response;
+  }
+
+  testSseCounter(): void {
+    const source = new EventSource('http://localhost:3333/counter');
+    source.addEventListener('counter', (event: MessageEvent) => {
+      this.sseCounterResponse.push(JSON.parse(event.data));
+    });
   }
 }

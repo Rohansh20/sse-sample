@@ -1,9 +1,14 @@
 <div>
-  <p>
-    <button (click)="testGetWelcome()">Test http get /welcome</button>
-  </p>
+  <p><button (click)="testGetWelcome()">Test http get /welcome</button></p>
   <div>
     <div>get /welcome Response:</div>
     <pre>{{ getWelcomeResponse | json }}</pre>
   </div>
+  <hr />
+  <p><button (click)="testSseCounter()">Test sse /counter</button></p>
+  <div>
+    <div>sse /counter Response:</div>
+    <pre>{{ sseCounterResponse | json }}</pre>
+  </div>
+  <hr />
 </div>
