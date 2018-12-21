@@ -41,6 +41,26 @@ app.get('/counter', (req, res) => {
   }, 5000);
 });
 
+app.get('/multiplier', (req, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream'
+  });
+  const number = +req.query.number;
+  let current = 1;
+  const interval = setInterval(() => {
+    res.write(
+      'event:multiplier\n' +
+        `data:${JSON.stringify({ value: number * current })}\n\n`
+    );
+    current++;
+    if (current === 11) {
+      res.write(`event:close\ndata:null\n\n`);
+      res.end();
+      clearInterval(interval);
+    }
+  }, 500);
+});
+
 const port = 3333;
 app.listen(port, (err: any) => {
   if (err) {
