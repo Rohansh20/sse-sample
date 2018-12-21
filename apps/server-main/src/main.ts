@@ -41,7 +41,7 @@ app.get('/counter', (req, res) => {
   }, 5000);
 });
 
-app.get('/multiplier', (req, res) => {
+app.get('/getTableOf', (req, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream'
   });
@@ -49,7 +49,7 @@ app.get('/multiplier', (req, res) => {
   let current = 1;
   const interval = setInterval(() => {
     res.write(
-      'event:multiplier\n' +
+      'event:getTableOf\n' +
         `data:${JSON.stringify({ value: number * current })}\n\n`
     );
     current++;
