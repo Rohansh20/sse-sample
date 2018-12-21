@@ -24,5 +24,12 @@ export class AppComponent {
     source.addEventListener('counter', (event: MessageEvent) => {
       this.sseCounterResponse.push(JSON.parse(event.data));
     });
+    source.addEventListener('close', () => {
+      // Otherwise, the browser would keep re-trying and we'll keep getting data
+      source.close();
+    });
+    source.onerror = event => {
+      console.error(event);
+    };
   }
 }
