@@ -1,5 +1,6 @@
 # SseSample
 
+Used [Server Sent Events](https://www.w3schools.com/html/html5_serversentevents.asp) for realtime communication between a Node server and an Angular client
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
 
 ## Instructions
